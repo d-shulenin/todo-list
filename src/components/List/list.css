@@ -4,3 +4,27 @@
   gap: 2.125rem;
   width: 35%;
 }
+
+@media screen and (min-width: 320px) {
+  .list {
+    width: 85%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .list {
+    width: 65%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .list {
+    width: 45%;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .list {
+    width: 35%;
+  }
+}

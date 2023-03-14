@@ -2,6 +2,7 @@ import { FC } from "react";
 import "./todo.css";
 
 export interface TodoI {
+  id: string;
   title: string;
   description: string;
 }

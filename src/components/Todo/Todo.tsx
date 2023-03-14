@@ -1,7 +1,7 @@
 import { FC } from "react";
 import "./todo.css";
 
-interface TodoI {
+export interface TodoI {
   title: string;
   description: string;
 }

@@ -3,35 +3,43 @@
   --bg-color-secondary: white;
   --color-primary: black;
   --color-secondary: #575767;
+  --placeholder-color: rgb(87, 87, 103, 0.5);
 }
 .app[data-theme="dark"] {
   --bg-color-primary: #1e1f25;
   --bg-color-secondary: #29292f;
   --color-primary: white;
-  --color-secondary: #dadada;
+  --color-secondary: rgb(218, 218, 218);
+  --placeholder-color: rgb(218, 218, 218, 0.5);
 }
 
 .app {
   width: 100%;
   min-height: 100dvh;
   padding: 2.1875rem 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2.5rem;
   background-color: var(--bg-color-primary);
   font-family: "Inter";
   font-style: normal;
 }
 
 .app__logo {
+  margin-bottom: 2.5rem;
   font-weight: 900;
   font-size: 4.5rem;
   line-height: 5.4375rem;
+  text-align: center;
   color: #e2e8f0;
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
+}
+
+.app__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.125rem;
+  margin-inline: auto;
 }
 
 .app__add-todo {
@@ -47,4 +55,28 @@
 
 .app__add-todo:hover {
   transform: scale(1.03);
+}
+
+@media screen and (min-width: 320px) {
+  .app__wrapper {
+    width: 85%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .app__wrapper {
+    width: 65%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .app__wrapper {
+    width: 45%;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .app__wrapper {
+    width: 35%;
+  }
 }

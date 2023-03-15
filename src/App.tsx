@@ -10,7 +10,7 @@ function App() {
     JSON.parse(localStorage.getItem("todos") || "[]")
   );
   const [form, setForm] = useState<boolean>(false);
-  const [theme, setTheme] = useState<"light" | "dark">("dark");
+  const [theme, setTheme] = useState<"light" | "dark">("light");
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);

@@ -4,6 +4,7 @@
   --color-primary: black;
   --color-secondary: #575767;
   --placeholder-color: rgb(87, 87, 103, 0.5);
+  --inputs-border-color: #b0b1b3;
 }
 .app[data-theme="dark"] {
   --bg-color-primary: #1e1f25;
@@ -11,6 +12,7 @@
   --color-primary: white;
   --color-secondary: rgb(218, 218, 218);
   --placeholder-color: rgb(218, 218, 218, 0.5);
+  --inputs-border-color: #b0b1b3;
 }
 
 .app {

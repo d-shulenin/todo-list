@@ -2,9 +2,8 @@ import { FC, Dispatch, MouseEvent, useState, ChangeEvent } from "react";
 import { useFormik } from "formik";
 import { nanoid } from "nanoid";
 import "./form.css";
-import cancel from "../../assets/icons/cancel.svg";
-import accept from "../../assets/icons/accept.svg";
 import { TodoI } from "../Todo/Todo";
+import * as Yup from "yup";
 
 interface FormI {
   form: boolean;
@@ -16,7 +15,7 @@ const Form: FC<FormI> = ({ form, setForm, setTodos }) => {
   const [currentTag, setCurrentTag] = useState<number>(0);
   const [tags, setTags] = useState<string[]>(Array(4).fill(""));
   const closeForm = (e: MouseEvent<HTMLButtonElement>): void => {
-    e.preventDefault;
+    e.preventDefault();
     formik.resetForm();
     setTags(Array(4).fill(""));
     setForm(false);
@@ -35,6 +34,11 @@ const Form: FC<FormI> = ({ form, setForm, setTodos }) => {
       description: "",
       tags: [],
     },
+    validationSchema: Yup.object({
+      title: Yup.string().required("Title is required"),
+      description: Yup.string(),
+      tags: Yup.array().of(Yup.string()),
+    }),
     onSubmit: (values) => {
       setTodos((prev) => [
         ...prev,
@@ -46,12 +50,13 @@ const Form: FC<FormI> = ({ form, setForm, setTodos }) => {
         },
       ]);
       formik.resetForm();
+      setTags(Array(4).fill(""));
       setForm(false);
     },
   });
   return form ? (
-    <div className="form">
-      <form onSubmit={formik.handleSubmit}>
+    <form className="form" onSubmit={formik.handleSubmit}>
+      <div className="form__wrapper">
         <input
           className="form__input"
           type="text"
@@ -61,6 +66,9 @@ const Form: FC<FormI> = ({ form, setForm, setTodos }) => {
           onChange={formik.handleChange}
           value={formik.values.title}
         />
+        {formik.errors.title && (
+          <span className="form__error">{formik.errors.title}</span>
+        )}
         <textarea
           className="form__input"
           id="description"
@@ -92,16 +100,15 @@ const Form: FC<FormI> = ({ form, setForm, setTodos }) => {
             </button>
           ))}
         </div>
-        <div className="form__buttons">
-          <button className="form__button" onClick={closeForm}>
-            <img src={cancel} alt="cancel" />
-          </button>
-          <button className="form__button">
-            <img src={accept} alt="accept" />
-          </button>
-        </div>
-      </form>
-    </div>
+      </div>
+      <div className="form__buttons">
+        <button
+          className="form__button form__button_cancel"
+          onClick={closeForm}
+        />
+        <button className="form__button form__button_accept" />
+      </div>
+    </form>
   ) : null;
 };
 

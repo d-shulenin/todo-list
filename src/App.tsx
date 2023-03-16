@@ -4,7 +4,6 @@ import List from "./components/List/List";
 import Form from "./components/Form/Form";
 import { TodoI } from "./components/Todo/Todo";
 import ThemeSwitch from "./components/ThemeSwitch/ThemeSwitch";
-import add from "./assets/icons/add.svg";
 
 function App() {
   const [todos, setTodos] = useState<TodoI[]>(
@@ -22,11 +21,9 @@ function App() {
         <List todos={todos} />
         <Form form={form} setForm={setForm} setTodos={setTodos} />
         {!form && (
-          <button className="app__add-todo" onClick={() => setForm(true)}>
-            <img src={add} alt="add" />
-          </button>
+          <button className="app__add-todo" onClick={() => setForm(true)} />
         )}
-        <ThemeSwitch setTheme={setTheme} />
+        <ThemeSwitch theme={theme} setTheme={setTheme} />
       </div>
     </div>
   );

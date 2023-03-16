@@ -1,0 +1,17 @@
+.theme-switch {
+  position: fixed;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  background-size: cover;
+  opacity: var(--theme-switch-opacity);
+}
+
+.theme-switch[data-theme="light"] {
+  background-image: url("./../../assets/icons/sun.png");
+}
+
+.theme-switch[data-theme="dark"] {
+  background-image: url("./../../assets/icons/moon.png");
+}

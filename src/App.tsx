@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import List from "./components/List/List";
 import Form from "./components/Form/Form";
-import add from "./assets/icons/add.svg";
 import { TodoI } from "./components/Todo/Todo";
+import ThemeSwitch from "./components/ThemeSwitch/ThemeSwitch";
+import add from "./assets/icons/add.svg";
 
 function App() {
   const [todos, setTodos] = useState<TodoI[]>(
@@ -25,6 +26,7 @@ function App() {
             <img src={add} alt="add" />
           </button>
         )}
+        <ThemeSwitch setTheme={setTheme} />
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, Dispatch } from "react";
 import "./todo.css";
 
 export interface TodoI {
@@ -6,11 +6,36 @@ export interface TodoI {
   title: string;
   description: string;
   tags: string[];
+  done: boolean;
 }
 
-const Todo: FC<TodoI> = ({ title, description, tags }) => {
+interface TodoProps extends TodoI {
+  setControls: Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Todo: FC<TodoProps> = ({
+  id,
+  title,
+  description,
+  tags,
+  done,
+  setControls,
+}) => {
+  const dragStartHandler = () => {
+    localStorage.setItem("dragged", id);
+    setControls(true);
+  };
+  const dragEndHandler = () => {
+    localStorage.setItem("dragged", "");
+    setControls(false);
+  };
   return (
-    <li className="todo" draggable>
+    <li
+      className={done ? "todo todo_done" : "todo"}
+      draggable
+      onDragStart={dragStartHandler}
+      onDragEnd={dragEndHandler}
+    >
       <h4 className="todo__title">{title}</h4>
       <p className="todo__description">{description}</p>
       <ul className="todo__tags">

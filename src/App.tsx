@@ -4,11 +4,13 @@ import List from "./components/List/List";
 import Form from "./components/Form/Form";
 import { TodoI } from "./components/Todo/Todo";
 import ThemeSwitch from "./components/ThemeSwitch/ThemeSwitch";
+import Controls from "./components/Controls/Controls";
 
 function App() {
   const [todos, setTodos] = useState<TodoI[]>(
     JSON.parse(localStorage.getItem("todos") || "[]")
   );
+  const [controls, setControls] = useState<boolean>(false);
   const [form, setForm] = useState<boolean>(false);
   const [theme, setTheme] = useState<"light" | "dark">("light");
   useEffect(() => {
@@ -16,15 +18,16 @@ function App() {
   }, [todos]);
   return (
     <div className="app" data-theme={theme}>
-      <h1 className="app__logo">Daily Todos</h1>
-      <div className="app__wrapper">
-        <List todos={todos} />
+      <header className="app__logo">Daily Todos</header>
+      <main className="app__wrapper">
+        <List todos={todos} setControls={setControls} />
         <Form form={form} setForm={setForm} setTodos={setTodos} />
         {!form && (
           <button className="app__add-todo" onClick={() => setForm(true)} />
         )}
-        <ThemeSwitch theme={theme} setTheme={setTheme} />
-      </div>
+      </main>
+      {controls && <Controls setTodos={setTodos} setControls={setControls} />}
+      <ThemeSwitch theme={theme} setTheme={setTheme} />
     </div>
   );
 }

@@ -1,16 +1,17 @@
-import { FC } from "react";
+import { Dispatch, FC } from "react";
 import "./list.css";
 import Todo, { TodoI } from "../Todo/Todo";
 
-interface ListI {
+interface ListProps {
   todos: TodoI[];
+  setControls: Dispatch<React.SetStateAction<boolean>>;
 }
 
-const List: FC<ListI> = ({ todos }) => {
+const List: FC<ListProps> = ({ todos, setControls }) => {
   return (
     <ul className="list">
       {todos.map((todo) => (
-        <Todo key={todo.id} {...todo} />
+        <Todo key={todo.id} {...todo} setControls={setControls} />
       ))}
     </ul>
   );

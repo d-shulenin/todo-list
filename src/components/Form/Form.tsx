@@ -5,13 +5,13 @@ import "./form.css";
 import { TodoI } from "../Todo/Todo";
 import * as Yup from "yup";
 
-interface FormI {
+interface FormProps {
   form: boolean;
   setForm: Dispatch<React.SetStateAction<boolean>>;
   setTodos: Dispatch<React.SetStateAction<TodoI[]>>;
 }
 
-const Form: FC<FormI> = ({ form, setForm, setTodos }) => {
+const Form: FC<FormProps> = ({ form, setForm, setTodos }) => {
   const [currentTag, setCurrentTag] = useState<number>(0);
   const [tags, setTags] = useState<string[]>(Array(4).fill(""));
   const closeForm = (e: MouseEvent<HTMLButtonElement>): void => {
@@ -33,6 +33,7 @@ const Form: FC<FormI> = ({ form, setForm, setTodos }) => {
       title: "",
       description: "",
       tags: [],
+      done: false,
     },
     validationSchema: Yup.object({
       title: Yup.string().required("Title is required"),
@@ -47,6 +48,7 @@ const Form: FC<FormI> = ({ form, setForm, setTodos }) => {
           title: values.title,
           description: values.description,
           tags: tags,
+          done: false,
         },
       ]);
       formik.resetForm();
@@ -106,7 +108,7 @@ const Form: FC<FormI> = ({ form, setForm, setTodos }) => {
           className="form__button form__button_cancel"
           onClick={closeForm}
         />
-        <button className="form__button form__button_accept" />
+        <button className="form__button form__button_accept" type="submit" />
       </div>
     </form>
   ) : null;

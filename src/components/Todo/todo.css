@@ -9,6 +9,16 @@
   cursor: grab;
 }
 
+.todo_done {
+  background: none;
+  box-shadow: none;
+  opacity: 0.5;
+}
+
+.todo_done .todo__title {
+  text-decoration: line-through;
+}
+
 .todo__title {
   font-weight: 800;
   font-size: 1.5rem;

@@ -1,12 +1,12 @@
 import { FC, Dispatch } from "react";
 import "./themeSwitch.css";
 
-interface ThemeSwitchI {
+interface ThemeSwitchProps {
   theme: "light" | "dark";
   setTheme: Dispatch<React.SetStateAction<"light" | "dark">>;
 }
 
-const ThemeSwitch: FC<ThemeSwitchI> = ({ theme, setTheme }) => {
+const ThemeSwitch: FC<ThemeSwitchProps> = ({ theme, setTheme }) => {
   return (
     <button
       className="theme-switch"

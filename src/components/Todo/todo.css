@@ -9,10 +9,18 @@
   cursor: grab;
 }
 
+.todo:active {
+  cursor: -webkit-grabbing;
+}
+
 .todo_done {
   background: none;
   box-shadow: none;
   opacity: 0.5;
+}
+
+.todo_touched {
+  transform: scale(1.02);
 }
 
 .todo_done .todo__title {
@@ -21,15 +29,15 @@
 
 .todo__title {
   font-weight: 800;
-  font-size: 1.5rem;
-  line-height: 1.8125rem;
+  font-size: 1.6rem;
+  line-height: 1.93rem;
   color: var(--color-primary);
 }
 
 .todo__description {
   font-weight: 500;
-  font-size: 1rem;
-  line-height: 1.1875rem;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
   color: var(--color-secondary);
 }
 

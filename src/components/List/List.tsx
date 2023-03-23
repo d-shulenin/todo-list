@@ -10,9 +10,11 @@ interface ListProps {
 const List: FC<ListProps> = ({ todos, setControls }) => {
   return (
     <ul className="list">
-      {todos.map((todo) => (
-        <Todo key={todo.id} {...todo} setControls={setControls} />
-      ))}
+      {todos
+        .sort((todo1, todo2) => +todo1.done - +todo2.done)
+        .map((todo) => (
+          <Todo key={todo.id} {...todo} setControls={setControls} />
+        ))}
     </ul>
   );
 };

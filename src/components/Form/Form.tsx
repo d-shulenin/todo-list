@@ -18,6 +18,7 @@ const Form: FC<FormProps> = ({ form, setForm, setTodos }) => {
     e.preventDefault();
     formik.resetForm();
     setTags(Array(4).fill(""));
+    setCurrentTag(0);
     setForm(false);
   };
   const tagsInputChangeHandler = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -53,6 +54,7 @@ const Form: FC<FormProps> = ({ form, setForm, setTodos }) => {
       ]);
       formik.resetForm();
       setTags(Array(4).fill(""));
+      setCurrentTag(0);
       setForm(false);
     },
   });

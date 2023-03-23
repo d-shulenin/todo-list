@@ -12,11 +12,6 @@
   box-sizing: border-box;
 }
 
-:focus,
-:active {
-  outline: none;
-}
-
 a:focus,
 a:active {
   outline: none;
@@ -101,13 +96,6 @@ input[type="submit"] {
   background-color: transparent;
   background: none;
   cursor: pointer;
-}
-
-input:focus,
-input:active,
-button:focus,
-button:active {
-  outline: none;
 }
 
 button::-moz-focus-inner {

@@ -38,7 +38,6 @@
 .app__logo {
   margin-bottom: 2.5rem;
   font-weight: 900;
-  font-size: 4.5rem;
   line-height: 5.4375rem;
   text-align: center;
   color: #e2e8f0;
@@ -72,11 +71,17 @@
   .app__wrapper {
     width: 85%;
   }
+  .app__logo {
+    font-size: 3.5rem;
+  }
 }
 
 @media screen and (min-width: 768px) {
   .app__wrapper {
     width: 65%;
+  }
+  .app__logo {
+    font-size: 3.8rem;
   }
 }
 
@@ -84,10 +89,16 @@
   .app__wrapper {
     width: 45%;
   }
+  .app__logo {
+    font-size: 4.2rem;
+  }
 }
 
 @media screen and (min-width: 1440px) {
   .app__wrapper {
     width: 35%;
+  }
+  .app__logo {
+    font-size: 4.5rem;
   }
 }

@@ -18,6 +18,7 @@
   background-position: center;
   background-size: 50%;
   filter: contrast(95%);
+  cursor: "copy";
 }
 
 .controls__icon:first-child {

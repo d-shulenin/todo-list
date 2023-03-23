@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import useLocalStorage from "./hooks/useLocalStorage";
 import "./App.css";
 import List from "./components/List/List";
 import Form from "./components/Form/Form";
@@ -7,15 +8,14 @@ import ThemeSwitch from "./components/ThemeSwitch/ThemeSwitch";
 import Controls from "./components/Controls/Controls";
 
 function App() {
-  const [todos, setTodos] = useState<TodoI[]>(
-    JSON.parse(localStorage.getItem("todos") || "[]")
-  );
+  const [todos, setTodos] = useLocalStorage<TodoI[]>("todos", []);
   const [controls, setControls] = useState<boolean>(false);
   const [form, setForm] = useState<boolean>(false);
-  const [theme, setTheme] = useState<"light" | "dark">("light");
-  useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos));
-  }, [todos]);
+  const [theme, setTheme] = useState<"light" | "dark">(() => {
+    const hours = new Date().getHours();
+    if (hours >= 6 && hours < 18) return "light";
+    else return "dark";
+  });
   return (
     <div className="app" data-theme={theme}>
       <header className="app__logo">Daily Todos</header>

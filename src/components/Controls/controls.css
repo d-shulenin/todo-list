@@ -18,14 +18,13 @@
   background-position: center;
   background-size: 50%;
   filter: contrast(95%);
-  cursor: "copy";
 }
 
-.controls__icon:first-child {
+.controls__icon_delete {
   background-image: url("./../../assets/icons/trash.svg");
 }
 
-.controls__icon:last-child {
+.controls__icon_done {
   background-image: url("./../../assets/icons/done.svg");
 }
 
@@ -35,6 +34,15 @@
 
 @media (hover: none) {
   .controls {
-    display: none;
+    justify-content: center;
+    gap: 10rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+  }
+
+  .controls__icon {
+    width: 8rem;
+    height: 8rem;
+    background-size: contain;
   }
 }

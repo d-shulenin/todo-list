@@ -60,10 +60,6 @@
   transition: opacity 0.2s ease;
 }
 
-/* .form__tag:focus {
-  outline: 1px solid green;
-} */
-
 .form__tag_active {
   opacity: var(--active-tag-opacity);
 }

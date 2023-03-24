@@ -1,4 +1,4 @@
-import { FC, Dispatch, useState } from "react";
+import { FC, Dispatch } from "react";
 import "./todo.css";
 
 export interface TodoI {
@@ -21,8 +21,7 @@ const Todo: FC<TodoProps> = ({
   done,
   setControls,
 }) => {
-  const [touched, setTouched] = useState<boolean>(false);
-  const dragStartHandler = () => {
+  const dragOrTouchStartHandler = () => {
     localStorage.setItem("dragged", id);
     setControls(true);
   };
@@ -32,12 +31,11 @@ const Todo: FC<TodoProps> = ({
   };
   return (
     <li
-      className={`todo ${done && "todo_done"} ${touched && "todo_touched"}`}
+      className={`todo ${done && "todo_done"}`}
       draggable
-      onDragStart={dragStartHandler}
+      onDragStart={dragOrTouchStartHandler}
       onDragEnd={dragEndHandler}
-      onTouchStart={() => setTouched(true)}
-      onTouchEnd={() => setTouched(false)}
+      onTouchStart={dragOrTouchStartHandler}
     >
       <h4 className="todo__title">{title}</h4>
       {Boolean(description) && (

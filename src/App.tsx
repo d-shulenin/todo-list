@@ -26,7 +26,9 @@ function App() {
           <button className="app__add-todo" onClick={() => setForm(true)} />
         )}
       </main>
-      {controls && <Controls setTodos={setTodos} setControls={setControls} />}
+      {controls && (
+        <Controls todos={todos} setTodos={setTodos} setControls={setControls} />
+      )}
       <ThemeSwitch theme={theme} setTheme={setTheme} />
     </div>
   );

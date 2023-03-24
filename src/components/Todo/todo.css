@@ -11,16 +11,11 @@
 
 .todo:active {
   cursor: -webkit-grabbing;
+  transform: scale(1.01);
 }
 
 .todo_done {
-  background: none;
-  box-shadow: none;
   opacity: 0.5;
-}
-
-.todo_touched {
-  transform: scale(1.02);
 }
 
 .todo_done .todo__title {
@@ -74,4 +69,10 @@
 .todo__tag_3 {
   background-color: #e6f5ff;
   color: #008ae6;
+}
+
+@media (hover: none) {
+  .todo:active {
+    transform: scale(1.02);
+  }
 }

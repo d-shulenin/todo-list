@@ -16,7 +16,7 @@ const Controls: FC<ControlsProps> = ({ todos, setTodos, setControls }) => {
   const [overDone, setOverDone] = useState<boolean>(false);
   const dropOrClickHandler = (
     e: DragEvent<HTMLButtonElement> | MouseEvent<HTMLButtonElement>
-  ) => {
+  ): void => {
     e.preventDefault();
     const target = e.target as HTMLElement;
     const dragged = localStorage.getItem("dragged");

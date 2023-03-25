@@ -14,8 +14,7 @@ interface FormProps {
 const Form: FC<FormProps> = ({ form, setForm, setTodos }) => {
   const [currentTag, setCurrentTag] = useState<number>(0);
   const [tags, setTags] = useState<string[]>(Array(4).fill(""));
-  const closeForm = (e: MouseEvent<HTMLButtonElement>): void => {
-    e.preventDefault();
+  const closeForm = (): void => {
     formik.resetForm();
     setTags(Array(4).fill(""));
     setCurrentTag(0);
@@ -109,6 +108,7 @@ const Form: FC<FormProps> = ({ form, setForm, setTodos }) => {
         <button
           className="form__button form__button_cancel"
           onClick={closeForm}
+          type="button"
         />
         <button className="form__button form__button_accept" type="submit" />
       </div>

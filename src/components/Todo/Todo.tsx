@@ -21,11 +21,11 @@ const Todo: FC<TodoProps> = ({
   done,
   setControls,
 }) => {
-  const dragOrTouchStartHandler = () => {
+  const dragOrTouchStartHandler = (): void => {
     localStorage.setItem("dragged", id);
     setControls(true);
   };
-  const dragEndHandler = () => {
+  const dragEndHandler = (): void => {
     localStorage.setItem("dragged", "");
     setControls(false);
   };
